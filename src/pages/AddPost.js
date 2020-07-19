@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TextInput, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
 import Regresar from '../components/Regresar';
 import TopAppBar from '../components/TopAppBar';
+import MyTextInput from '../components/MyTextInput';
 
 const AddPost = () =>{
 
@@ -11,26 +12,15 @@ const AddPost = () =>{
             <Text style={titleText}>Nuevo Post</Text>
         </TopAppBar>
 
-        <MyTextImput titulo='Titulo' />
-        <MyTextImput titulo='Descripcion' />
-        <MyTextImput titulo='Cuerpo' />
-        <MyTextImput titulo='Url imagen' />
+        <MyTextInput titulo='Titulo' />
+        <MyTextInput titulo='Descripcion' />
+        <MyTextInput titulo='Cuerpo' />
+        <MyTextInput titulo='Url imagen' />
         
         <TouchableHighlight >
             <Text style={botonEnviar}>Guardar</Text>
         </TouchableHighlight>
     </>);
-}
-
-const MyTextImput = props =>{
-
-    return(<View>
-        <Text style={labelText}>{props.titulo}</Text>
-        <TextInput
-            style={textinput}
-            {...props}
-        />
-    </View>);
 }
 
 const textinput = { 

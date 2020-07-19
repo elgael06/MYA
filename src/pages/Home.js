@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableHighlight, Modal, StyleSheet, Alert } from 'react-native';
 import LinksMenu from '../components/LinksMenu';
 import TopAppBar from '../components/TopAppBar';
+import MyTextInput from '../components/MyTextInput';
 
 
 const Home = () =>{
@@ -41,20 +42,10 @@ const Home = () =>{
         zIndex:999
     }}>
         <LinksMenu />
-        <Text>Agregar a lista</Text>
-        <TextInput
-            style={
-                { 
-                    height: 42, 
-                    borderColor: 'gray',
-                    borderRadius:10,
-                    padding:12,
-                    margin:15, 
-                    borderWidth: 1 
-                }
-            }
-            onChangeText={onChangeText}
+        <MyTextInput 
+            titulo='Agregar a lista' 
             value={value}
+            onChangeText={onChangeText} 
         />
         <TouchableHighlight onPress={setItem}>
             <Text  style={
