@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableHighlight, Modal, StyleSheet, Alert } f
 import LinksMenu from '../components/LinksMenu';
 import TopAppBar from '../components/TopAppBar';
 import MyTextInput from '../components/MyTextInput';
+import MyBotton from '../components/MyBotton';
 
 
 const Home = () =>{
@@ -47,20 +48,10 @@ const Home = () =>{
             value={value}
             onChangeText={onChangeText} 
         />
-        <TouchableHighlight onPress={setItem}>
-            <Text  style={
-                {
-                    margin:5,
-                    borderRadius:12,
-                    textAlign:'center',
-                    height:42,
-                    padding:12,
-                    backgroundColor:'#bdbdbd',
-                    fontSize:16,
-                    color:'#fffccc'
-                }
-            }>Click</Text>
-        </TouchableHighlight>
+        <MyBotton
+            onPress={setItem} 
+            text='Click'
+        />
 
             {
                 itemList.map((e,i)=><View>
