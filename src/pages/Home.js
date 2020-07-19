@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableHighlight, Modal, StyleSheet, Alert } from 'react-native';
 import LinksMenu from '../components/LinksMenu';
+import TopAppBar from '../components/TopAppBar';
 
 
 const Home = () =>{
@@ -30,13 +31,17 @@ const Home = () =>{
     }
 
 
-    return(<View style={{
-        marginTop:50,
+    return(
+    <>
+    <TopAppBar >
+        <Text style={styles.titleText}>Home</Text>
+    </TopAppBar>
+    <View style={{
         padding:10,
         zIndex:999
     }}>
         <LinksMenu />
-        <Text>Home</Text>
+        <Text>Agregar a lista</Text>
         <TextInput
             style={
                 { 
@@ -103,7 +108,8 @@ const Home = () =>{
                 </View>
             </View>
         </Modal>
-    </View>);
+    </View>
+    </>);
 }
 
 const styles = StyleSheet.create({
@@ -142,6 +148,15 @@ const styles = StyleSheet.create({
     modalText: {
       marginBottom: 15,
       textAlign: "center"
+    },
+    titleText: {
+        fontSize:30,
+        padding:15,
+        margin:1,
+        textAlign:'center',
+        marginBottom:40,
+        position:'absolute',
+        marginLeft:80,
     }
   });
   

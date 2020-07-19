@@ -1,35 +1,30 @@
 import React from 'react';
-import { TouchableHighlight, Text, View } from 'react-native';
+import { TouchableHighlight, Text, View, TouchableOpacity } from 'react-native';
 import { useHistory } from 'react-router-native';
 
 export default()=>{
     const history = useHistory();
 
     return(<View style={touch}>
-        <TouchableHighlight style={{position:'absolute'}} onPress={()=>history.goBack()}>
+        <TouchableOpacity style={{position:'absolute'}} onPress={()=>history.goBack()}>
             <Text style={textRegresar} >Regresar</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
     </View>
     );
 }
 
 const touch={
     color:'#bdbdbd',
-    margin:20,
+    margin:10,
     display:'flex',
-    borderColor: 'gray',
-    borderWidth: 1 ,
     height:30,
     width:60,
-    position:'absolute'
 }
 
 const textRegresar ={
-    margin:20,
-    display:'flex',
-    borderColor: 'gray',
-    borderWidth: 1 ,
-    color:'#bdbdbd',
+    textAlign:'center',
+    marginTop:8,    
+    color:'gray',
     height:30,
     width:60,
     position:'relative'

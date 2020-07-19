@@ -1,25 +1,19 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
-import { useHistory } from 'react-router-native';
+import { View, Text} from 'react-native';
+
+import TopAppBar from '../components/TopAppBar';
+import Regresar from '../components/Regresar';
 
 
 const About =()=>{
-    const history = useHistory();
 
-    const retunHome = ()=>{
-        history.goBack();
-    }
     return(<View>
-        <TouchableOpacity onPress={retunHome}>
-            <Text style={{
-            height:60,
-            margin:30,
-            textAlign:'center',
-            backgroundColor:'#fff',
-            fontSize:25,
-            marginTop:10
-        }} >About</Text>
-        </TouchableOpacity>
+        
+        <TopAppBar>
+            <Regresar />
+            <Text style={titleText}>About App.</Text>
+        </TopAppBar>
+
         <View style={{
             padding:20,
             textAlign:'center'
@@ -27,6 +21,15 @@ const About =()=>{
             <Text>Este es el componente About.</Text>
         </View>
     </View>);
+}
+const titleText ={
+    fontSize:30,
+    padding:15,
+    margin:1,
+    textAlign:'center',
+    marginBottom:40,
+    position:'absolute',
+    marginLeft:80,
 }
 
 export default About;
