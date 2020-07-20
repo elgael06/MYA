@@ -17,6 +17,7 @@ const Home = () =>{
 
     const setItem = () =>{
         if(value!=""){
+            console.log(value);
             setitemList([...itemList,value]);
             setValue('');
         }else{
@@ -54,10 +55,15 @@ const Home = () =>{
         />
 
             {
-                itemList.map((e,i)=><View>
-                    <Text>#{i+1}</Text>
-                    <Text>{e}</Text>
-                </View>)
+                itemList.map((e,i)=>{
+                    console.log(e, e.length);
+                    return <View key={i+1}>
+                        <Text style={{fontSize:30,display:"flex"}}> 
+                            <Text style={{display:"flex",width:30}}>#{i+1} - </Text>
+                            {e}
+                        </Text>
+                    </View>
+                })
             }
         <Modal 
             animationType='fade'
