@@ -12,6 +12,9 @@ const LinksMenu = ()=>{
         <Link to='/About' underlayColor="#f0f4f7" style={stylesLink} >
             <Text>About</Text>
         </Link>
+        <Link to='/Post' underlayColor="#f0f4f7" style={stylesLink} >
+            <Text>lista Post</Text>
+        </Link>
         <Link to='/AddPost' underlayColor="#f0f4f7" style={stylesLink} >
             <Text>Add Post</Text>
         </Link>
