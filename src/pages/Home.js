@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableHighlight, Modal, StyleSheet, Alert } from 'react-native';
 import LinksMenu from '../components/LinksMenu';
 import TopAppBar from '../components/TopAppBar';
-import MyTextInput from '../components/MyTextInput';
-import MyBotton from '../components/MyBotton';
+import { Button, Input } from 'galio-framework';
+import { FlatList } from 'react-native';
 
 
 const Home = () =>{
     const [value,setValue] = useState('');
     const [itemList, setitemList] = useState([]);
-    const [modalState, setmodalState] = useState(false)
 
     const onChangeText = event =>{
         setValue(event)
@@ -18,7 +17,7 @@ const Home = () =>{
     const setItem = () =>{
         if(value!=""){
             console.log(value);
-            setitemList([...itemList,value]);
+            setitemList([...itemList,{value,id:itemList.length}]);
             setValue('');
         }else{
         
@@ -36,66 +35,34 @@ const Home = () =>{
 
     return(
     <>
-    <TopAppBar >
-        <Text style={styles.titleText}>Home</Text>
-    </TopAppBar>
+    <TopAppBar title='HOME' />
     <View style={{
         padding:10,
-        zIndex:999
+        zIndex:999,
+        overFlow:'auto'
     }}>
         <LinksMenu />
-        <MyTextInput 
-            titulo='Agregar a lista' 
+        <Input 
+            placeholder='Nuevo item'
+            color='#aba'
+            style={{borderColor:'#bba'}}
             value={value}
             onChangeText={onChangeText} 
         />
-        <MyBotton
-            onPress={setItem} 
-            text='Click'
-        />
-
-            {
-                itemList.map((e,i)=>{
-                    console.log(e, e.length);
-                    return <View key={i+1}>
+        <Button color="info" size='large'  onPress={setItem}  >Click</Button>
+        <FlatList
+        
+            data={itemList}
+            renderItem={({item})=>{
+                    return <View key={item.id+1}>
                         <Text style={{fontSize:30,display:"flex"}}> 
-                            <Text style={{display:"flex",width:30}}>#{i+1} - </Text>
-                            {e}
+                            <Text style={{display:"flex",width:30}}># {item.id+1}- </Text>
+                            {item.value}
                         </Text>
                     </View>
-                })
+                }
             }
-        <Modal 
-            animationType='fade'
-            visible={modalState}
-            transparent={true}
-
-        >
-             <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                    <Text>
-                        Falta colocal texto en el input.
-                    </Text>
-                    <TouchableHighlight onPress={()=>setmodalState(false)}>
-                        <Text
-                            style={styles.modalText,{
-                                margin:5,
-                                borderRadius:12,
-                                textAlign:'center',
-                                minWidth:95,
-                                height:42,
-                                padding:12,
-                                backgroundColor:'#bdbdbd',
-                                fontSize:16,
-                                color:'#fffccc'
-                            }}
-                        >
-                            Ok
-                        </Text>
-                    </TouchableHighlight>
-                </View>
-            </View>
-        </Modal>
+        />
     </View>
     </>);
 }

@@ -4,16 +4,19 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import AddPost from '../pages/AddPost';
 import ListaPost from '../pages/ListaPost';
+import LayoutApp from '../components/LayoutApp';
 
 
 export default()=>{
 
-    return(<Router  >
-        <Switch key='root' >
-            <Route path='/' component={Home} exact={true} />
-            <Route path='/About' component={About} exact={true} />
-            <Route path='/Post' component={ListaPost} exact={true} />
-            <Route path='/AddPost' component={AddPost} exact={true} />
-        </Switch>
-    </Router>);
+    return(<LayoutApp>
+        <Router  >
+            <Switch key='root' >
+                <Route path='/' component={Home} exact={true} />
+                <Route path='/About' component={About} exact={true} />
+                <Route path='/Post' component={ListaPost} exact={true} />
+                <Route path='/AddPost' component={AddPost} exact={true} />
+            </Switch>
+        </Router>
+    </LayoutApp>);
 }
