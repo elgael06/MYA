@@ -33,4 +33,5 @@ para instalar release :
 <code>yarn install:android</code>
 
 
-
+### nota
+tener conectado dispositivo android. 
