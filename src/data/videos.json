@@ -1,6 +1,7 @@
 [
     {  
         "name":"digimon",
+        "portada":"https://i1.wp.com/wipy.tv/wp-content/uploads/2020/06/pelicula-live-action-de-digimon.jpg",
         "capitulos":[
             "/CJkl/download",
             "/H17p/download",
@@ -17,6 +18,27 @@
     },
     {
         "name":"pokemon",
+        "portada":"https://www.milenio.com/uploads/media/2018/02/27/pokemon-aparecio-juego-game-boy.jpeg",
+        "capitulos":[]
+    },
+    {
+        "name":"yu gi ho!",
+        "portada":"https://pm1.narvii.com/6277/50a76ee8c248b6f3fe11755cb4b961a085bb1029_hq.jpg",
+        "capitulos":[]
+    },
+    {
+        "name":"re:zero",
+        "portada":"https://vignette.wikia.nocookie.net/rezero/images/5/57/Re_Zero_Infinity_Portada.png/revision/latest?cb=20190326151255&path-prefix=es",
+        "capitulos":[]
+    },
+    {
+        "name":"konosuba",
+        "portada":"https://ramenparados.com/wp-content/uploads/2019/03/KonoSuba-film.jpg",
+        "capitulos":[]
+    },
+    {
+        "name":"kill la kill",
+        "portada":"https://vignette.wikia.nocookie.net/trigger/images/9/96/Kill_la_Kill_profile.jpg/revision/latest?cb=20181006042804&path-prefix=es",
         "capitulos":[]
     }
 ]
