@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:android":"./gradlew bundleRelease",
+    "install:android": "react-native run-android --variant=release"
   },
   "dependencies": {
     "@unimodules/core": "^5.3.0",
@@ -17,6 +19,7 @@
     "react-native": "0.63.1",
     "react-native-vector-icons": "^7.0.0",
     "react-native-video": "^4.4.5",
+    "react-native-video-controls": "^2.6.0",
     "react-redux": "^7.2.0",
     "react-router-native": "^5.2.0",
     "redux": "^4.0.5",
@@ -35,7 +38,7 @@
   "jest": {
     "preset": "react-native"
   },
-  "apiVideo":{
-    "uri":"https://gdurl.com"
+  "apiVideo": {
+    "uri": "https://gdurl.com"
   }
 }

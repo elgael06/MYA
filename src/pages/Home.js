@@ -42,26 +42,7 @@ const Home = () =>{
         overFlow:'auto'
     }}>
         <LinksMenu />
-        <Input 
-            placeholder='Nuevo item'
-            color='#aba'
-            style={{borderColor:'#bba'}}
-            value={value}
-            onChangeText={onChangeText} 
-        />
-        <Button color="info" size='large'  onPress={setItem}  >Click</Button>
-        <FlatList
-            data={itemList}
-            renderItem={({item})=>{
-                    return <View key={item.id+1}>
-                        <Text style={{fontSize:30,display:"flex"}}> 
-                            <Text style={{display:"flex",width:30}}># {item.id+1}- </Text>
-                            {item.value}
-                        </Text>
-                    </View>
-                }
-            }
-        />
+       
     </View>
     </>);
 }

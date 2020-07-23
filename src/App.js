@@ -12,9 +12,10 @@ const customTheme = {
   // COLORS: {
   //    PRIMARY: '#3B5998',
   //    INPUT:'#1232FF',
-  //    NAVBAR:'#bdb',
+  //    NAVBAR:'#FFF',
   //    BLOCK:'red'
   //   },
+
   // this will overwrite the Galio COLORS PRIMARY color #B23AFC
 };
 

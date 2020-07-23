@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import TopAppBar from '../../components/TopAppBar';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Image, FlatList, Text, View } from 'react-native';
 import { Block, Button } from 'galio-framework';
+import { useHistory } from 'react-router-native';
 
 
 const Capitulos = () =>{
+    const history = useHistory();
     const {serie:{
         name,
         portada,
         capitulos
     }} = useSelector(state=>state.series);
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         console.log(name);
@@ -18,6 +21,16 @@ const Capitulos = () =>{
 
     const payVideo = (index,uri) => {
         console.log( index,'uri=>',uri);
+        const value = {
+            title:`${name} : Capitulo ${index}`,
+            uri
+        }
+        dispatch({
+            type:'SELECT_CAPITULO',
+            value
+        });
+        console.log('ir a video'); 
+        history.push('/VideoPaly');
     }
 
     return(

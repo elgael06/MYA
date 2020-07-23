@@ -31,7 +31,7 @@ const Series = ()=>{
     }
 
     return(<>
-        <TopAppBar title='Series' back />
+        <TopAppBar title='Series' />
         <FlatList 
             style={{padding:5,height:'90%'}}
             data={series.lista}
