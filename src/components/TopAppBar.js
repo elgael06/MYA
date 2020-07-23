@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { NavBar, Text, theme } from 'galio-framework';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { useHistory } from 'react-router-native';

@@ -20,7 +20,7 @@ const customTheme = {
 
 const App = () => {
   return (<Provider store={store}>
-      <StatusBar backgroundColor={"#dbdbdb50"} barStyle={'dark-content'} /> 
+      <StatusBar backgroundColor={"#dbdbdb90"} barStyle={'dark-content'} /> 
       <GalioProvider theme={customTheme}>
         <Routes />
       </GalioProvider>
