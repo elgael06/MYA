@@ -1306,6 +1306,13 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@unimodules/core@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-5.3.0.tgz#c425e59b1f9c1e2c91b235b6192e5f622a47d833"
+  integrity sha512-uGpkYE2zI0F1LTv+p6drzCHAZo8UFITxedHUH6pjWQBHdpTtae5cU7l3F/CzQ4WYU6SWhkzaB90/Ydf3DNTuLw==
+  dependencies:
+    compare-versions "^3.4.0"
+
 abab@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"
@@ -2067,6 +2074,11 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
+compare-versions@^3.4.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/compare-versions/-/compare-versions-3.6.0.tgz#1a5689913685e5a87637b8d3ffca75514ec41d62"
+  integrity sha512-W6Af2Iw1z4CB7q4uU4hv646dW9GQuBM+YpC0UvUCWSD8w90SJjp+ujJuXaEMtAXBtSqGfMPuFOVn4/+FlaqfBA==
+
 component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
@@ -2359,6 +2371,11 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+
+eme-encryption-scheme-polyfill@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eme-encryption-scheme-polyfill/-/eme-encryption-scheme-polyfill-2.0.1.tgz#b080b01bffd74c75c9cf8044c1cabedf3b83954f"
+  integrity sha512-Wz+Ro1c0/2Wsx2RLFvTOO0m4LvYn+7cSnq3XOvRvLLBq8jbvUACH/zpU9s0/5+mQa5oaelkU69x+q0z/iWYrFA==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -2719,6 +2736,14 @@ expect@^26.1.0:
     jest-matcher-utils "^26.1.0"
     jest-message-util "^26.1.0"
     jest-regex-util "^26.0.0"
+
+expo-av@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-8.3.0.tgz#d4a7863000c5787fcd4ea3b40e97e639ce252ede"
+  integrity sha512-Povz56nfGDf2tVXWsHCiVtCtoiD6MlgxCne+BjVuPGMMRxK+7bNWobpXH/CJEz35bVe2vSwPXKwTL1cwjh8+Rg==
+  dependencies:
+    lodash "^4.17.15"
+    nullthrows "^1.1.0"
 
 extend-shallow@^1.1.2:
   version "1.1.4"
@@ -4226,6 +4251,11 @@ jsx-ast-utils@^2.4.1:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
 
+keymirror@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/keymirror/-/keymirror-0.1.1.tgz#918889ea13f8d0a42e7c557250eee713adc95c35"
+  integrity sha1-kYiJ6hP40KQufFVyUO7nE63JXDU=
+
 kind-of@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-1.1.0.tgz#140a3d2d41a36d2efcfa9377b62c24f8495a5c44"
@@ -5005,7 +5035,7 @@ npm-run-path@^4.0.0:
   dependencies:
     path-key "^3.0.0"
 
-nullthrows@^1.1.1:
+nullthrows@^1.1.0, nullthrows@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/nullthrows/-/nullthrows-1.1.1.tgz#7818258843856ae971eae4208ad7d7eb19a431b1"
   integrity sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==
@@ -5461,7 +5491,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5524,6 +5554,15 @@ react-native-vector-icons@^7.0.0:
     lodash "^4.17.15"
     prop-types "^15.7.2"
     yargs "^15.0.2"
+
+react-native-video@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.4.5.tgz#d0db799293f8622c7894dd0f8875cb41bfafbde8"
+  integrity sha512-jm1Yf1S3ZqrsbUo+3v9nUaQz/eD4kytzkm8jfDEvKzg/EEzci1EzjLSZqQcNtyLg1fvfkyRbvvzUYhS2SjdKPA==
+  dependencies:
+    keymirror "^0.1.1"
+    prop-types "^15.5.10"
+    shaka-player "^2.4.4"
 
 react-native@0.63.1:
   version "0.63.1"
@@ -5670,9 +5709,9 @@ regenerate@^1.4.0:
   integrity sha512-j2+C8+NtXQgEKWk49MMP5P/u2GhnahTtVkRIHr5R5lVRlbKvmQ+oS+A5aLKWp2ma5VkT8sh6v+v4hbH0YHR66A==
 
 regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.4:
-  version "0.13.6"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.6.tgz#d236043c46ffab2968c1ef651803d8acdea8ed65"
-  integrity sha512-GmwlGiazQEbOwQWDdbbaP10i15pGtScYWLbMZuu+RKRz0cZ+g8IUONazBnaZqe7j1670IV1HgE4/8iy7CQPf4Q==
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 regenerator-transform@^0.14.2:
   version "0.14.5"
@@ -6030,6 +6069,13 @@ setprototypeof@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+
+shaka-player@^2.4.4:
+  version "2.5.13"
+  resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-2.5.13.tgz#f8c493b825c735fc86d619cba8b2eb2f2a382233"
+  integrity sha512-rEh7juGlTvvF10oD7+EukS12EysZXI2fiGvNLqO7GsBQ5R/sFwcTGEB8A6lWlHQXeGVbT+MxZWKMZwFE805G6A==
+  dependencies:
+    eme-encryption-scheme-polyfill "^2.0.1"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -6720,6 +6766,11 @@ unicode-property-aliases-ecmascript@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.1.0.tgz#dd57a99f6207bedff4628abefb94c50db941c8f4"
   integrity sha512-PqSoPh/pWetQ2phoj5RLiaqIk4kCNwoV3CI+LfGmWLKI3rE3kl1h59XpX2BjgDrmbxD9ARtQobPGU1SguCYuQg==
+
+unimodules-permissions-interface@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/unimodules-permissions-interface/-/unimodules-permissions-interface-5.2.1.tgz#97e3259d6322f4e2200685eb4b235275378e8b87"
+  integrity sha512-uBbcriIBdY2kMmVKgSZePDKkM2fviSCKcHnje8wBPK6O/n2UlocVpq4DJjt13KK3YcEMHUAK+D73b12zbfOUTw==
 
 union-value@^1.0.0:
   version "1.0.1"

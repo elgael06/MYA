@@ -6,8 +6,8 @@ const LinksMenu = ()=>{
 
     return(<View>
 
-        <Link to='/' underlayColor="#f0f4f7" style={stylesLink}  >
-            <Text> Home</Text>
+        <Link to='/Series' underlayColor="#f0f4f7" style={stylesLink}  >
+            <Text> Series</Text>
         </Link>
         <Link to='/About' underlayColor="#f0f4f7" style={stylesLink} >
             <Text>About</Text>
