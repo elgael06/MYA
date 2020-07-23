@@ -2,34 +2,38 @@ import React from 'react';
 import { View, Text} from 'react-native';
 
 import TopAppBar from '../components/TopAppBar';
-import Regresar from '../components/Regresar';
+import { Block, Accordion } from 'galio-framework';
 
+const data = [
+    { title: "First Chapter", content: "Lorem ipsum dolor sit amet", 
+      icon: {
+        name: 'laptop',
+        family: 'material',
+        size: 16,
+      } 
+   },
+    { title: "2nd Chapter", content: "Lorem ipsum dolor sit amet" },
+    { title: "3rd Chapter", content: "Lorem ipsum dolor sit amet" }
+  ];
 
 const About =()=>{
 
-    return(<View>
+    return(<>
         
-        <TopAppBar>
-            <Regresar />
-            <Text style={titleText}>About App.</Text>
-        </TopAppBar>
-
+        <TopAppBar 
+            back
+            title='About App.'
+        />
         <View style={{
             padding:20,
-            textAlign:'center'
+            textAlign:'center',
+            flex: 20,
         }}>
-            <Text>Este es el componente About.</Text>
+            <Text style={{fontSize:20,marginBottom:10}}>Este es el componente About.</Text>
+            <Block style={{ height: 200 }}>
+                <Accordion dataArray={data} />
+            </Block>
         </View>
-    </View>);
+    </>);
 }
-const titleText ={
-    fontSize:30,
-    padding:15,
-    margin:1,
-    textAlign:'center',
-    marginBottom:40,
-    position:'absolute',
-    marginLeft:80,
-}
-
 export default About;

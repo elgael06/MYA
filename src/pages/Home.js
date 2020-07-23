@@ -51,7 +51,6 @@ const Home = () =>{
         />
         <Button color="info" size='large'  onPress={setItem}  >Click</Button>
         <FlatList
-        
             data={itemList}
             renderItem={({item})=>{
                     return <View key={item.id+1}>

@@ -5,15 +5,15 @@ import Icon  from 'react-native-vector-icons/FontAwesome';
 import { useHistory } from 'react-router-native';
 import { TouchableOpacity } from 'react-native';
 
-export default ({backgroundColor='#FFF',borderColor='#bdb',title='',children})=>{
+export default ({title='',right=null,back=false})=>{
     const history = useHistory();
 
     return(<>
-        <NavBar
-            back={true}
-            left={<TouchableOpacity onPress={history.goBack}>
+        <NavBar          
+            left={back ? <TouchableOpacity onPress={history.goBack}>
                 <Icon name="chevron-left" color={"#dbd"} size={theme.SIZES.BASE} />
-            </TouchableOpacity> }         
+            </TouchableOpacity> :null }   
+            right={right}      
             title={title} 
         />
     </>);

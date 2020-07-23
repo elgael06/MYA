@@ -1,64 +1,31 @@
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  StatusBar,
-  View,
-  Text,
-} from 'react-native';
-
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 import Routes from './Routes';
+import { GalioProvider } from 'galio-framework';
+import { Provider } from 'react-redux';
+import store from './store';
+import { StatusBar } from 'react-native';
 
-const App = () => {
-  return (
-    <>
-      <Routes />
-    </>
-  );
+const customTheme = {
+  SIZES: { BASE: 18, },
+  // this will overwrite the Galio SIZES BASE value 16
+  // COLORS: {
+  //    PRIMARY: '#3B5998',
+  //    INPUT:'#1232FF',
+  //    NAVBAR:'#bdb',
+  //    BLOCK:'red'
+  //   },
+  // this will overwrite the Galio COLORS PRIMARY color #B23AFC
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+const App = () => {
+  return (<Provider store={store}>
+      <StatusBar backgroundColor={"#dbdbdb50"} barStyle={'dark-content'} /> 
+      <GalioProvider theme={customTheme}>
+        <Routes />
+      </GalioProvider>
+    </Provider>
+  );
+};
 
 export default App;
