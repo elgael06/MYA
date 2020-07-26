@@ -1,29 +1,33 @@
 import React, { useEffect } from 'react';
 import TopAppBar from '../../components/TopAppBar';
 import { useSelector, useDispatch } from 'react-redux';
-import { Image, FlatList, Text, View } from 'react-native';
+import { Image, FlatList, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { Block, Button } from 'galio-framework';
 import { useHistory } from 'react-router-native';
-
+import { getCapitulos } from '../../actions/capitulos';
 
 const Capitulos = () =>{
     const history = useHistory();
-    const {serie:{
-        name,
-        portada,
-        capitulos
-    }} = useSelector(state=>state.series);
+    const {
+        serie:{
+            nombre,
+            portada,
+            capitulos
+        },
+        ListaCapitulos=[],
+        refreshing=false  } = useSelector(state=>state.series);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        console.log(name);
+        dispatch(getCapitulos());
     },[]);
 
-    const payVideo = (index,uri) => {
-        console.log( index,'uri=>',uri);
+    const payVideo = (descripcion,uri,index) => {
+        console.log( descripcion,'uri=>',uri);
         const value = {
-            title:`${name} : Capitulo ${index}`,
-            uri
+            descripcion,
+            uri,
+            index
         }
         dispatch({
             type:'SELECT_CAPITULO',
@@ -36,23 +40,27 @@ const Capitulos = () =>{
     return(
         <>
             <TopAppBar 
-                title={name} 
+                title={nombre} 
                 back
             />
             <Image source={{uri:portada}} style={{position:'absolute',top:62,bottom:0,left:1,right:0}} />            
-            {capitulos.length ? <FlatList 
+            {capitulos ? <FlatList 
+                refreshing={refreshing}
+                onRefresh={()=>dispatch(getCapitulos())}
                 style={{padding:10,backgroundColor:'#dbdbdb80',margin:10,borderRadius:5}}
-                data={capitulos}
+                data={ListaCapitulos}
                 renderItem={({item,index})=>{
-                    return (<Block 
+                    
+                    const alerta = ()=>Alert.alert(`Alerta `,"Reproducir: "+item.descripcion,
+                        [{text:'NO'},{text:'SI',onPress:()=>payVideo(item.descripcion,item.uri,index)}]
+                    );
+                    
+                    return (<TouchableOpacity onLongPress={alerta} onPress={alerta}
                         style={
-                            {height:50,marginBottom:20,borderWidth:1,padding:10,backgroundColor:'#00000050',borderRadius:5}
+                            {height:50,marginBottom:20,borderWidth:1,padding:10,backgroundColor:'#00000080',borderRadius:5}
                         }>
-                        <Text style={{fontSize:18,color:'#fff'}}>Capitulo {index+1}</Text>
-                        <View style={{flex:1,marginTop:-39,flexDirection:'row-reverse'}}>
-                            <Button onPress={()=>payVideo(index+1,item)} style={{backgroundColor:'#ffffff30',width:55}} size="small" round> ver</Button>
-                        </View>
-                    </Block>)
+                        <Text style={{fontSize:18,color:'#fff'}}>{item.descripcion}</Text>
+                    </TouchableOpacity>)
                 }}
             /> : <View style={{padding:40,backgroundColor:'#dbdbdb80',textAlign:'center'}}>
                 <Text style={{fontSize:20}}>Sin capitulos por el momento!!!</Text>

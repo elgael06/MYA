@@ -2,7 +2,9 @@
 export const initialSeries = {
     lista:[],
     serie:null,
-    capitulo:null
+    ListaCapitulos:[],
+    capitulo:null,
+    refreshing:false
 };
 
 const series = (state=initialSeries,action)=>{
@@ -17,6 +19,16 @@ const series = (state=initialSeries,action)=>{
                 ...state,
                 serie:action.value
             };
+        case 'CAPITULOS':
+            return {
+                ...state,
+                ListaCapitulos:action.value
+            };
+        case 'REFRESH_PAGE':
+            return{
+                ...state,
+                refreshing:action.value
+            }
         case 'SELECT_CAPITULO':
             return {
                 ...state,

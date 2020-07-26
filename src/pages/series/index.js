@@ -1,28 +1,24 @@
 import React, { useEffect } from 'react';
 import TopAppBar from '../../components/TopAppBar';
 import { FlatList, Image, View } from 'react-native';
-
-import videos from '../../data/videos.json';
 import { Block, Text, Button } from 'galio-framework';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-native';
+import { getSeries } from '../../actions/series';
 
 
 
 const Series = ()=>{
     const history = useHistory();
-    const {series} = useSelector(state=>state);
+    const {lista=[],refreshing=false} = useSelector(state=>state.series);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch({
-            type:'SERIES',
-            value:[...videos]
-        })
+        dispatch(getSeries());
     },[]);
 
     const selectSeries = value => {
-        console.log(value.name);
+        console.log(value.nombre);
         dispatch({
             type:'SELECT_SERIE',
             value:{...value}
@@ -33,8 +29,10 @@ const Series = ()=>{
     return(<>
         <TopAppBar title='Series' />
         <FlatList 
+            refreshing={refreshing}
+            onRefresh={()=> dispatch(getSeries())}
             style={{padding:5,height:'90%'}}
-            data={series.lista}
+            data={lista}
             renderItem={({item})=>{
                 return(<Block style={
                     {
@@ -46,12 +44,12 @@ const Series = ()=>{
                         borderWidth:1,
                         borderColor:'#bdbdbd95'
                     }
-                }>
+                } key={item.id}>
 
                     <Image style={{flex:1,borderRadius:15}} source={{uri:item.portada}} style={{height:65,width:70}} />
                     <View style={{flex:1,paddingLeft:20}}>
-                        <Text style={{fontSize:20}}>{item.name}</Text>
-                        <Text style={{padding:15}}>Capitulos : {item.capitulos.length}</Text>
+                        <Text style={{fontSize:20}}>{item.nombre}</Text>
+                        <Text style={{padding:15}}>Capitulos : {item.capitulos}</Text>
                     </View>
                     <View  style={{flex:1,flexDirection:'row-reverse',alignItems:'flex-end',width:70}} >
                         <Button style={{width:60}} onPress={()=>selectSeries(item)} size="small" round>ir</Button>

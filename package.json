@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "build:android":"./gradlew bundleRelease",
+    "build:android": "./gradlew bundleRelease",
     "install:android": "react-native run-android --variant=release"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "react-redux": "^7.2.0",
     "react-router-native": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "unimodules-permissions-interface": "^5.2.1"
   },
   "devDependencies": {
