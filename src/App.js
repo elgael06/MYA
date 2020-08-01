@@ -9,19 +9,20 @@ import { StatusBar } from 'react-native';
 const customTheme = {
   SIZES: { BASE: 18, },
   // this will overwrite the Galio SIZES BASE value 16
-  // COLORS: {
-  //    PRIMARY: '#3B5998',
-  //    INPUT:'#1232FF',
-  //    NAVBAR:'#FFF',
-  //    BLOCK:'red'
-  //   },
+  COLORS: {
+     PRIMARY: '#00adb5',
+     INPUT:'#1232FF',
+     NAVBAR:'#eeeeee',
+     BLOCK:'red',
+     TEXT:'#eeeeee'
+    },
 
   // this will overwrite the Galio COLORS PRIMARY color #B23AFC
 };
 
 const App = () => {
   return (<Provider store={store}>
-      <StatusBar backgroundColor={"#dbdbdb90"} barStyle={'dark-content'} /> 
+      <StatusBar backgroundColor={"#222831"} barStyle={'light-content'} /> 
       <GalioProvider theme={customTheme}>
         <Routes />
       </GalioProvider>

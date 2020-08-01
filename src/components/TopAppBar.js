@@ -9,15 +9,19 @@ export default ({title='',right=null,back=false})=>{
 
     return(<View 
         style={{
-            backgroundColor:theme.COLORS.FACEBOOK
+            backgroundColor:'#222831',
+            borderBottomEndRadius:10,
+            borderBottomStartRadius:10,
+            height:50
         }}>
-        <NavBar 
+        <NavBar
+            style={{marginTop:-15}}
             transparent
             left={back ? <TouchableOpacity onPress={history.goBack}>
-                <Icon name="chevron-left" color={"#dbd"} size={theme.SIZES.BASE} />
+                <Icon name="chevron-left" color={"#EEE"} size={theme.SIZES.BASE} />
             </TouchableOpacity> :null }   
             right={right}      
-            title={<Text style={{color:'#fff'}}> {title} </Text>} 
+            title={<Text style={{color:'#EEE',fontSize:20}}> {title} </Text>} 
         />
     </View>);
 }
