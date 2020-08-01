@@ -53,7 +53,7 @@ const Series = ()=>{
 const VistaLista = ({title,selectSeries,lista})=><><Text style={{marginTop:5,marginLeft:20,fontSize:25,color:'#eeeeee'}}>{title}</Text>
 <FlatList
      horizontal
-    style={{height:190}}
+    style={{height:190,backgroundColor:'#eeeeee60',borderRadius:5,marginStart:10,marginEnd:10}}
     data={lista}
     viewabilityConfig={{
         waitForInteraction: true,
@@ -79,7 +79,9 @@ const VistaLista = ({title,selectSeries,lista})=><><Text style={{marginTop:5,mar
                 <Text style={{padding:5,marginTop:20,fontSize:21,color:'#FFF'}}>Capitulos : {item.capitulos}</Text>
             </Block>
             <View  style={{flex:1,flexDirection:'row-reverse',alignItems:'flex-end'}} >
-                <Button style={{width:60}} onPress={()=>selectSeries(item)} size="small" color='#00adb590' round >lista</Button>
+                <Button style={{width:60}} onPress={()=>selectSeries(item)} size="small" color='#393e4670'  >
+                    <Text style={{color:'#EEE',fontSize:20}}>lista</Text>
+                </Button>
             </View>
         </View>)
     }}
