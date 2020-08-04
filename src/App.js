@@ -10,13 +10,13 @@ import Nav from './Routes/navigator';
 const customTheme = {
   SIZES: { BASE: 18, },
   // this will overwrite the Galio SIZES BASE value 16
-  COLORS: {
-     PRIMARY: '#00adb5',
-     INPUT:'#1232FF',
-     NAVBAR:'#eeeeee',
-     BLOCK:'red',
-     TEXT:'#eeeeee'
-    },
+  // COLORS: {
+  //    PRIMARY: '#00adb5',
+  //    INPUT:'#1232FF',
+  //    NAVBAR:'#eeeeee',
+  //    BLOCK:'red',
+  //    TEXT:'#eeeeee'
+  //   },
 
   // this will overwrite the Galio COLORS PRIMARY color #B23AFC
 };

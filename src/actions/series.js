@@ -24,5 +24,14 @@ export const getTopSeries = (top=5) => {
         dispatch({type:'REFRESH_PAGE',value:false})
     }
 } 
-
+export const getBusqueda = (filtro) =>{
+    return async  dispatch =>{
+        dispatch({type:'REFRESH_PAGE',value:true});
+        dispatch({type:'CAPITULOS',value:[]});
+        dispatch({type:'SEARCH',value:[]});
+        const value = await(await fetch(`https://apiserieslyg.herokuapp.com/api/series?search=${filtro}`)).json();
+        dispatch({type:'SEARCH',value});
+        dispatch({type:'REFRESH_PAGE',value:false})
+    }
+} 
 

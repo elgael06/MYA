@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import TopAppBar from '../../components/TopAppBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { Image, FlatList, Text, View, TouchableOpacity, Alert } from 'react-native';
-import { Block, Button } from 'galio-framework';
-//import { useHistory } from 'react-router-native';
 import { getCapitulos } from '../../actions/capitulos';
 import LayoutApp from '../../components/LayoutApp';
 
@@ -40,6 +38,8 @@ const Capitulos = ({navigation}) =>{
     return(
         <LayoutApp>
             <TopAppBar 
+                back
+                onBack={()=>navigation.pop()}    
                 title={nombre}                 
             />
             <Image source={{uri:portada}} style={{position:'absolute',top:62,bottom:0,left:1,right:0}} />            

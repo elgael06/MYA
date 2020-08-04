@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Video from 'react-native-video-controls';
 import { useSelector, useDispatch } from 'react-redux';
-import { StatusBar, Alert } from 'react-native';
+import { StatusBar, Alert, View } from 'react-native';
 import LayoutApp from '../../components/LayoutApp';
-// import { useHistory } from 'react-router-native';
 
 
 const VideoPaly = ({navigation}) =>{
     const {descripcion='',uri='',index=-1 } = useSelector(state=>state.series.capitulo);
     const { ListaCapitulos=[]  } = useSelector(state=>state.series);
+    const [cargando,setCargando] = useState(false);
     const dispatch = useDispatch();
 
     let reference = null;
@@ -22,14 +22,17 @@ const VideoPaly = ({navigation}) =>{
     }
     const salir = ()=>{
         console.log('salir');
-        navigation.pop();
+        navigation.push('Series');
     }
     const videoError =(err)=>{
         console.log('Error',err);
         Alert.alert('Error de red','El video no se puede reprodicir!',[{text:'Aceptar',onPress:salir}])
     }
     const onEnd = () => {
+        console.log('salir');
+        setCargando(true);
         if(index<ListaCapitulos.length-1){
+            setTimeout(()=>setCargando(false),200);
             const newVideo = ListaCapitulos[index+1];
             console.log(newVideo.descripcion);
             const value = {
@@ -45,14 +48,15 @@ const VideoPaly = ({navigation}) =>{
     }
     
     return(<>
-         <StatusBar  hidden/> 
+         <StatusBar   hidden/> 
          <LayoutApp>
-        <Video 
+         {cargando ? null : <Video 
             title={descripcion}
             fullscreen={false}
             source={{uri:uri}}
             navigator={{
-                pop:salir
+                pop:salir,
+
             }}
             videoStyle={{
                 backgroundColor:'#bdbdbd50',
@@ -60,13 +64,13 @@ const VideoPaly = ({navigation}) =>{
             onEnd={onEnd}
             seekColor='#f2d40f'
             tapAnywhereToPause={true}
-            controlTimeout={3000}
             ref={e=>reference=e}
             resizeMode="cover"
             onBuffer={onBuffer}
             onError={videoError}     
             audioOnly
-        />
+
+        /> }
         </LayoutApp>
     </>)
 }

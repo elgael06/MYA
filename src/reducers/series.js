@@ -5,7 +5,7 @@ export const initialSeries = {
     serie:null,
     ListaCapitulos:[],
     capitulo:null,
-    refreshing:true
+    filtroSeries:[]
 };
 
 const series = (state=initialSeries,action)=>{
@@ -25,16 +25,16 @@ const series = (state=initialSeries,action)=>{
                 ...state,
                 serie:action.value
             };
+        case 'SEARCH':
+            return{
+                ...state,
+                filtroSeries:action.value
+            }
         case 'CAPITULOS':
             return {
                 ...state,
                 ListaCapitulos:action.value
             };
-        case 'REFRESH_PAGE':
-            return{
-                ...state,
-                refreshing:action.value
-            }
         case 'SELECT_CAPITULO':
             return {
                 ...state,

@@ -4,7 +4,7 @@ import Icon  from 'react-native-vector-icons/FontAwesome';
 import { useHistory } from 'react-router-native';
 import { TouchableOpacity, View } from 'react-native';
 
-export default ({title='',right=null,back=false})=>{
+export default ({title='',right=null,back=false,onBack=null})=>{
     const history = useHistory();
 
     return(<View 
@@ -17,8 +17,8 @@ export default ({title='',right=null,back=false})=>{
         <NavBar
             style={{marginTop:-15}}
             transparent
-            left={back ? <TouchableOpacity onPress={history.goBack}>
-                <Icon name="chevron-left" color={"#EEE"} size={theme.SIZES.BASE} />
+            left={back ? <TouchableOpacity onPress={onBack}>
+                <Icon name="arrow-left" color={"#EEE"} size={19} />
             </TouchableOpacity> :null }   
             right={right}      
             title={<Text style={{color:'#EEE',fontSize:20}}> {title} </Text>} 
