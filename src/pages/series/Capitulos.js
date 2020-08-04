@@ -3,11 +3,11 @@ import TopAppBar from '../../components/TopAppBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { Image, FlatList, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { Block, Button } from 'galio-framework';
-import { useHistory } from 'react-router-native';
+//import { useHistory } from 'react-router-native';
 import { getCapitulos } from '../../actions/capitulos';
+import LayoutApp from '../../components/LayoutApp';
 
-const Capitulos = () =>{
-    const history = useHistory();
+const Capitulos = ({navigation}) =>{
     const {
         serie:{
             nombre,
@@ -34,14 +34,13 @@ const Capitulos = () =>{
             value
         });
         console.log('ir a video'); 
-        history.push('/VideoPaly');
+        navigation.navigate('VideoPaly');
     }
 
     return(
-        <>
+        <LayoutApp>
             <TopAppBar 
-                title={nombre} 
-                back
+                title={nombre}                 
             />
             <Image source={{uri:portada}} style={{position:'absolute',top:62,bottom:0,left:1,right:0}} />            
             {capitulos ? <FlatList 
@@ -65,7 +64,7 @@ const Capitulos = () =>{
             /> : <View style={{padding:40,backgroundColor:'#dbdbdb80',textAlign:'center'}}>
                 <Text style={{fontSize:20}}>Sin capitulos por el momento!!!</Text>
             </View>}
-        </>
+        </LayoutApp>
     );
 }
 

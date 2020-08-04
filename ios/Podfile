@@ -10,6 +10,8 @@ target 'pokemon_app' do
 
   pod 'react-native-video', :path => '../node_modules/react-native-video'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'pokemon_appTests' do
     inherit! :complete
     # Pods for testing

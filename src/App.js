@@ -1,10 +1,11 @@
 
 import React from 'react';
-import Routes from './Routes';
+//import Routes from './Routes';
 import { GalioProvider } from 'galio-framework';
 import { Provider } from 'react-redux';
 import store from './store';
 import { StatusBar } from 'react-native';
+import Nav from './Routes/navigator';
 
 const customTheme = {
   SIZES: { BASE: 18, },
@@ -24,7 +25,7 @@ const App = () => {
   return (<Provider store={store}>
       <StatusBar backgroundColor={"#222831"} barStyle={'light-content'} /> 
       <GalioProvider theme={customTheme}>
-        <Routes />
+        <Nav />
       </GalioProvider>
     </Provider>
   );

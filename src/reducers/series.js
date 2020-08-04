@@ -1,10 +1,11 @@
 
 export const initialSeries = {
     lista:[],
+    listaTop:[],
     serie:null,
     ListaCapitulos:[],
     capitulo:null,
-    refreshing:false
+    refreshing:true
 };
 
 const series = (state=initialSeries,action)=>{
@@ -14,6 +15,11 @@ const series = (state=initialSeries,action)=>{
                 ...state,
                 lista:action.value
             }
+        case 'TOP_SERIES':
+            return {
+                ...state,
+                listaTop:action.value
+            };
         case 'SELECT_SERIE':            
             return {
                 ...state,

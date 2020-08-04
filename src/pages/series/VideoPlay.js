@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Video from 'react-native-video-controls';
 import { useSelector, useDispatch } from 'react-redux';
 import { StatusBar, Alert } from 'react-native';
-import { useHistory } from 'react-router-native';
+import LayoutApp from '../../components/LayoutApp';
+// import { useHistory } from 'react-router-native';
 
 
-const VideoPaly = () =>{
-    const history = useHistory();
+const VideoPaly = ({navigation}) =>{
     const {descripcion='',uri='',index=-1 } = useSelector(state=>state.series.capitulo);
     const { ListaCapitulos=[]  } = useSelector(state=>state.series);
     const dispatch = useDispatch();
@@ -22,10 +22,10 @@ const VideoPaly = () =>{
     }
     const salir = ()=>{
         console.log('salir');
-        history.goBack();
+        navigation.pop();
     }
-    const videoError =()=>{
-        console.log('Error');
+    const videoError =(err)=>{
+        console.log('Error',err);
         Alert.alert('Error de red','El video no se puede reprodicir!',[{text:'Aceptar',onPress:salir}])
     }
     const onEnd = () => {
@@ -46,16 +46,16 @@ const VideoPaly = () =>{
     
     return(<>
          <StatusBar  hidden/> 
+         <LayoutApp>
         <Video 
             title={descripcion}
             fullscreen={false}
-            source={{uri:`https://gdurl.com${uri}`}}
+            source={{uri:uri}}
             navigator={{
                 pop:salir
             }}
             videoStyle={{
                 backgroundColor:'#bdbdbd50',
-                color:'#f2d40f'
             }}
             onEnd={onEnd}
             seekColor='#f2d40f'
@@ -67,6 +67,7 @@ const VideoPaly = () =>{
             onError={videoError}     
             audioOnly
         />
+        </LayoutApp>
     </>)
 }
 
