@@ -59,3 +59,5 @@ para instalar release :
 
 ### nota
 tener conectado dispositivo android. 
+
+<a href='https://github.com/elgael06/series_anime_y_mas/raw/master/vistasApp/app-release.apk'>Descargar APK.</a>
