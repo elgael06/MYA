@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input, Block } from 'galio-framework';
 import LayoutApp from '../../components/LayoutApp';
 import TopAppBar from '../../components/TopAppBar';
@@ -10,9 +10,13 @@ import { View } from 'react-native';
 
 const FiltroSeries = ({navigation}) =>{
     const {filtroSeries=[]} = useSelector(state=>state.series);
+    const {refreshing=false} = useSelector(state=>state.userInterface);
     const dispatch = useDispatch();
     const [value,setValue] = useState('');
 
+    useEffect(()=>{        
+        dispatch({type:'SEARCH',value:[]});
+    },[]);
 
     const handle = e =>{
         setValue(e);
@@ -50,9 +54,22 @@ const FiltroSeries = ({navigation}) =>{
                 />
             </Block>
             <FlatList
-        style={{height:210,backgroundColor:'#00000060',borderRadius:5,marginStart:10,marginEnd:10}} 
+                refreshing={refreshing}
+                style={{
+                    height:310,
+                    width:'96%',
+                    flex:1,
+                    backgroundColor:'#00000060',
+                    borderRadius:5,
+                    marginStart:10,
+                    marginEnd:10,
+                    borderColor:'#FFF',
+                    borderWidth:2,
+                    alignContent:'center',
+                    alignSelf:'center'
+                }} 
                 data={filtroSeries}
-                renderItem={({item})=>(<View style={{height:200}}>
+                renderItem={({item})=>(<View style={{height:260,width:'100%'}}>
                     <CardSerie item={item} selectSeries={selectSeries} />
                 </View> )}
             />

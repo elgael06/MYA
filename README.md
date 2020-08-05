@@ -6,7 +6,7 @@
     
 #### compatible con api android 24 y superior.
 
-## Capturas pantalla 
+## Capturas pantalla V1
 <div style={{display:"inline-block",padding:30}}>
 
 ## Series
@@ -22,6 +22,30 @@
 ## Reproductor
 <img src='./vistasApp/capturas/4_reproductor.png' height='200' />
 </div>
+
+## Capturas pantalla V2
+<div style={{display:"inline-block",padding:30}}>
+
+## Series
+<img src='./vistasApp/capturas/v2/series_inicio.png' height='200' />
+</div>
+<div style={{display:"inline-block",padding:30}}>
+
+## Capitulos
+<img src='./vistasApp/capturas/v2/series_capitulos.png' height='200' />
+</div>
+<div style={{display:"inline-block",padding:30}}>
+
+## Busqueda
+<img src='./vistasApp/capturas/v2/series_buscar.png' width='200' />
+</div>
+<div style={{display:"inline-block",padding:30}}>
+
+## Reproductor
+<img src='./vistasApp/capturas/v2/series_reproductos.png' width='200' />
+</div>
+
+
 
 ## compilar para android:
     
