@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Video from 'react-native-video-controls';
 import { useSelector, useDispatch } from 'react-redux';
-import { StatusBar, Alert, View } from 'react-native';
+import { StatusBar, Alert, View, Dimensions, Text } from 'react-native';
+import WebView from 'react-native-webview';
 import LayoutApp from '../../components/LayoutApp';
-import { Button } from 'galio-framework';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -14,11 +13,14 @@ const VideoPaly = ({navigation}) =>{
     const [cargando,setCargando] = useState(false);
     const dispatch = useDispatch();
 
-    let reference = null;
+    // const windowWidth = Dimensions.get('window').width;
+    // const windowHeight = Dimensions.get('window').height;
+    // let reference = null;
     
     useEffect(()=>{
         console.log('play video',descripcion,uri);
-    },[])
+
+    },[]);
 
     const onBuffer =()=>{
         console.log('cargando...');
@@ -53,33 +55,43 @@ const VideoPaly = ({navigation}) =>{
         });
     }
     
-    return(<>
-         <StatusBar   hidden/> 
-         <LayoutApp>
-         {cargando ? null : <Video 
-            fullscreenOrientation='portrait'
-            title={descripcion}
-            fullscreen={true}
-            source={{
-                uri:uri,
-                autoplay: true,
-                initOptions: ['--codec=avcodec'],
+    return(<><LayoutApp>
+         <StatusBar   hidden={true}/> 
+         {cargando ? null : 
+        <WebView 
+            style={{
+                position: 'absolute',
+                top: 0, left: 0, right: 0, bottom: 0,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'transparent'
             }}
-            navigator={{pop:salir}}
-            videoStyle={{
-                backgroundColor:'#bdbdbd50',
-            }}
-            onEnd={onEnd}
-            seekColor='#f2d40f'
-            ref={e=>reference=e}
-            onBuffer={onBuffer}
-            onError={videoError}     
-            audioOnly
-            
-        /> }
-        <View style={{position:'absolute',left:70,width:20,bottom:13}}>
-            <TouchableOpacity style={{height:20,with:15}} onLongPress={onEnd} >
-                <Icon name='step-forward' color='#EEEEEE70' size={17} />
+            source={{ html: !uri.includes('https://mega.nz') ? `
+                <video width='100%' height='100%' style='position:'absolute';top: '0px'; left: '0px'; right: 0px; bottom: '0px';' controls >
+                    <source src="${uri}">
+                    Your App does not support video.
+                </video>
+            ` : `
+            <iframe 
+                width='100%' height='100%' style='position:'absolute';top: '0px'; left: '0px'; right: 0px; bottom: '0px';'
+                frameborder="0" 
+                src="${uri}" 
+                allowfullscreen 
+                allow="autoplay;"></iframe>
+            ` }}
+        />
+         }
+
+        <View style={{position:'absolute',left:5,width:45,top:2,zIndex:9999}}>
+            <TouchableOpacity style={{height:25,with:8}} onPress={salir} >
+                <Icon style={{padding:5}} name='times-circle' color='#EEEEEE70' size={21} />
+            </TouchableOpacity>
+        </View>
+        <View style={{position:'absolute',right:10,width:45,top:2,zIndex:9999}}>
+            <TouchableOpacity style={{height:25,with:4}} onPress={onEnd} >
+                <Text style={{padding:5,color:'#EEEEEE70'}}>SIG.
+                <Icon style={{padding:5}} name='step-forward' color='#EEEEEE70' size={17} />
+                </Text>
             </TouchableOpacity>
         </View>
 
@@ -88,4 +100,58 @@ const VideoPaly = ({navigation}) =>{
 }
 
 export default VideoPaly;
+
+/**
+    "react-native-video": "^4.4.5",
+    "react-native-video-controls": "^2.6.0",
+    "react-native-video-player": "^0.10.1",
+    "react-native-vlc-player": "^0.2.3",
+
+// import VlcPlayer from 'react-native-vlc-player';
+// import NativeVlcPlayer from 'react-native-vlc-player/src/NativeVlcPlayer';
+// import Video from 'react-native-video-controls';
+
+//  <NativeVlcPlayer 
+        //     ref={re=>reference=re}
+        //     autoplay={true}
+        //     style={{
+        //         position: 'absolute',
+        //         top: 0, left: 0, right: 0, bottom: 0,
+        //         alignItems: 'center',
+        //         justifyContent: 'center',
+        //         backgroundColor: 'transparent'
+        //     }}
+
+        //   source={{
+        //     uri: uri,
+        //     autoplay: true,
+        //     initOptions: ['--codec=avcodec'],
+        //   }}
+        //   onVLCEnded={onEnd}
+        //   onVLCError={videoError}
+
+        //  />
+        //  <Video 
+        //     fullscreenOrientation='portrait'
+        //     title={descripcion}
+        //     fullscreen={true}
+        //     source={{
+        //         uri:uri,
+        //         autoplay: true,
+        //         initOptions: ['--codec=avcodec'],
+        //     }}
+        //     navigator={{pop:salir}}
+        //     videoStyle={{
+        //         backgroundColor:'#bdbdbd50',
+        //     }}
+        //     onEnd={onEnd}
+        //     seekColor='#f2d40f'
+        //     ref={e=>reference=e}
+        //     onBuffer={onBuffer}
+        //     onError={videoError}     
+        //     audioOnly                        
+        // />
+        
+    
+*/
 
