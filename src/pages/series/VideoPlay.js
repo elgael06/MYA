@@ -60,11 +60,12 @@ const VideoPaly = ({navigation}) =>{
             fullscreenOrientation='portrait'
             title={descripcion}
             fullscreen={true}
-            source={{uri:uri}}
-            navigator={{
-                pop:salir,
-
+            source={{
+                uri:uri,
+                autoplay: true,
+                initOptions: ['--codec=avcodec'],
             }}
+            navigator={{pop:salir}}
             videoStyle={{
                 backgroundColor:'#bdbdbd50',
             }}
@@ -76,9 +77,9 @@ const VideoPaly = ({navigation}) =>{
             audioOnly
             
         /> }
-        <View style={{position:'absolute',right:10,width:20,bottom:50}}>
+        <View style={{position:'absolute',left:70,width:20,bottom:13}}>
             <TouchableOpacity style={{height:20,with:15}} onLongPress={onEnd} >
-                <Icon name='step-forward' color='#EEE' size={20} />
+                <Icon name='step-forward' color='#EEEEEE70' size={17} />
             </TouchableOpacity>
         </View>
 
