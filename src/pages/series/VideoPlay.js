@@ -3,7 +3,6 @@ import Video from 'react-native-video-controls';
 import { useSelector, useDispatch } from 'react-redux';
 import { StatusBar, Alert, View } from 'react-native';
 import LayoutApp from '../../components/LayoutApp';
-import { Button } from 'galio-framework';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 

@@ -16,7 +16,6 @@
     "@react-navigation/native": "^5.7.2",
     "@react-navigation/stack": "^5.8.0",
     "@unimodules/core": "^5.3.0",
-    "expo-av": "^8.3.0",
     "galio-framework": "^0.7.1",
     "react": "16.13.1",
     "react-native": "0.63.1",
