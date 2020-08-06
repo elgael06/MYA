@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Video from 'react-native-video-controls';
 import { useSelector, useDispatch } from 'react-redux';
 import { StatusBar, Alert, View } from 'react-native';
+import { WebView } from 'react-native';
 import LayoutApp from '../../components/LayoutApp';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -52,38 +53,45 @@ const VideoPaly = ({navigation}) =>{
         });
     }
     
-    return(<>
-         <StatusBar   hidden/> 
+    return(
          <LayoutApp>
-         {cargando ? null : <Video 
-            fullscreenOrientation='portrait'
-            title={descripcion}
-            fullscreen={true}
-            source={{
-                uri:uri,
-                autoplay: true,
-                initOptions: ['--codec=avcodec'],
-            }}
-            navigator={{pop:salir}}
-            videoStyle={{
-                backgroundColor:'#bdbdbd50',
-            }}
-            onEnd={onEnd}
-            seekColor='#f2d40f'
-            ref={e=>reference=e}
-            onBuffer={onBuffer}
-            onError={videoError}     
-            audioOnly
+         <StatusBar   hidden/> 
+         {cargando ? null : <WebView
+            originWhitelist={['*']}
+            web={`<video width="320" height="240" autoplay controls>
+            <source src="${uri}"  />
+            </video>
+            `}
+         />
+        //  <Video 
+        //     fullscreenOrientation='portrait'
+        //     title={descripcion}
+        //     fullscreen={true}
+        //     source={{
+        //         uri:uri,
+        //         autoplay: true,
+        //         initOptions: ['--codec=avcodec'],
+        //     }}
+        //     navigator={{pop:salir}}
+        //     videoStyle={{
+        //         backgroundColor:'#bdbdbd50',
+        //     }}
+        //     onEnd={onEnd}
+        //     seekColor='#f2d40f'
+        //     ref={e=>reference=e}
+        //     onBuffer={onBuffer}
+        //     onError={videoError}     
+        //     audioOnly
             
-        /> }
+        // /> 
+         }
         <View style={{position:'absolute',left:70,width:20,bottom:13}}>
             <TouchableOpacity style={{height:20,with:15}} onLongPress={onEnd} >
                 <Icon name='step-forward' color='#EEEEEE70' size={17} />
             </TouchableOpacity>
         </View>
 
-        </LayoutApp>
-    </>)
+    </LayoutApp>)
 }
 
 export default VideoPaly;
