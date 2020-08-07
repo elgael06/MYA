@@ -12,6 +12,7 @@ const VideoPaly = ({navigation}) =>{
     const { ListaCapitulos=[]  } = useSelector(state=>state.series);
     const [cargando,setCargando] = useState(false);
     const dispatch = useDispatch();
+    const [pathLink,setPath] = useState('');
 
     // const windowWidth = Dimensions.get('window').width;
     // const windowHeight = Dimensions.get('window').height;
@@ -19,7 +20,6 @@ const VideoPaly = ({navigation}) =>{
     
     useEffect(()=>{
         console.log('play video',descripcion,uri);
-
     },[]);
 
     const onBuffer =()=>{
@@ -86,6 +86,9 @@ const VideoPaly = ({navigation}) =>{
             <TouchableOpacity style={{height:25,with:8}} onPress={salir} >
                 <Icon style={{padding:5}} name='times-circle' color='#EEEEEE70' size={21} />
             </TouchableOpacity>
+        </View>
+        <View style={{position:'absolute',left:45,width:45,top:8,zIndex:9999}}>
+        <Text style={{color:'#EEEEEE70'}}>{descripcion}</Text>
         </View>
         <View style={{position:'absolute',right:10,width:45,top:2,zIndex:9999}}>
             <TouchableOpacity style={{height:25,with:4}} onPress={onEnd} >
