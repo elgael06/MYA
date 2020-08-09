@@ -84,7 +84,7 @@ const VideoPaly = ({navigation}) =>{
             <WebView 
                 style={{
                     position: 'absolute',
-                    top: -10, left: -10, right: -10, bottom: -10,
+                    top: -10, left: -5, right: -5, bottom: -5,
                     alignItems: 'center',
                     justifyContent: 'center',
                     backgroundColor: 'transparent'
@@ -103,7 +103,7 @@ const VideoPaly = ({navigation}) =>{
             <Text style={{color:'#EEEEEE70'}}>{descripcion}</Text>
         </View>
 
-        <View style={{position:'absolute',right:10,width:75,top:2,zIndex:9999}}>
+        <View style={{position:'absolute',right:10,width:55,top:2,zIndex:9999}}>
             <TouchableOpacity style={{height:25,with:4}} onPress={onEnd} >
                 <Text style={{padding:5,color:'#EEEEEE70'}}>SIG.
                 <Icon style={{padding:5}} name='step-forward' color='#EEEEEE70' size={17} />
