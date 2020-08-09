@@ -20,12 +20,13 @@ const Capitulos = ({navigation}) =>{
         dispatch(getCapitulos());
     },[]);
 
-    const payVideo = (descripcion,uri,index) => {
+    const payVideo = (descripcion,uri,index,id) => {
         console.log( descripcion,'uri=>',uri);
         const value = {
             descripcion,
             uri,
-            index
+            index,
+            id
         }
         dispatch({
             type:'SELECT_CAPITULO',
@@ -51,7 +52,7 @@ const Capitulos = ({navigation}) =>{
                 renderItem={({item,index})=>{
                     
                     const alerta = ()=>Alert.alert(`Alerta `,"Reproducir: "+item.descripcion,
-                        [{text:'NO'},{text:'SI',onPress:()=>payVideo(item.descripcion,item.uri,index)}]
+                        [{text:'NO'},{text:'SI',onPress:()=>payVideo(item.descripcion,item.uri,index,item.id)}]
                     );
                     
                     return (<TouchableOpacity onLongPress={alerta} onPress={alerta}

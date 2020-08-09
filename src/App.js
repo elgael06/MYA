@@ -12,7 +12,7 @@ const customTheme = {
   // this will overwrite the Galio SIZES BASE value 16
   // COLORS: {
   //    PRIMARY: '#00adb5',
-  //    INPUT:'#1232FF',
+  //    INPUT:'#',
   //    NAVBAR:'#eeeeee',
   //    BLOCK:'red',
   //    TEXT:'#eeeeee'
