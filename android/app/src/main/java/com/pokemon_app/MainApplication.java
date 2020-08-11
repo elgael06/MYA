@@ -15,6 +15,7 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 // import com.brentvatne.react.ReactVideoPackage;
+import com.sbugert.rnadmob.RNAdMobPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -31,6 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           //packages.add(new ReactVideoPackage());
+          // packages.add(new MainReactPackage());
+          // packages.add(new RNAdMobPackage());
           return packages;
         }
 

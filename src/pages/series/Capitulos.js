@@ -4,6 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Image, FlatList, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { getCapitulos } from '../../actions/capitulos';
 import LayoutApp from '../../components/LayoutApp';
+import { 
+    AdMobBanner, 
+    AdMobInterstitial, 
+    PublisherBanner,
+    AdMobRewarded
+  } from 'react-native-admob';
 
 const Capitulos = ({navigation}) =>{
     const {
@@ -35,6 +41,12 @@ const Capitulos = ({navigation}) =>{
         console.log('ir a video'); 
         navigation.navigate('VideoPaly');
     }
+    const bannerError =()=>{
+        console.log('fallo baner');
+    }
+    const adMobEvent =()=>{
+        console.log('event baner.');
+    }
 
     return(
         <LayoutApp>
@@ -43,11 +55,60 @@ const Capitulos = ({navigation}) =>{
                 onBack={()=>navigation.pop()}    
                 title={nombre}                 
             />
-            <Image source={{uri:portada}} style={{position:'absolute',top:62,bottom:0,left:1,right:0}} />            
+            <PublisherBanner
+                    bannerSize="smartBannerPortrait"
+                    adUnitID="ca-app-pub-9425276964066348/8203255709"
+                    didFailToReceiveAdWithError={bannerError}
+                    admobDispatchAppEvent={adMobEvent} />
+
+        <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/8203255709"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} />
+
+        <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/8203255709"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} />
+
+        <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/8203255709"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} />
+
+        <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/8203255709"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} />
+                <PublisherBanner
+                        bannerSize="smartBannerPortrait"
+                        adUnitID="ca-app-pub-9425276964066348/8203255709"
+                        didFailToReceiveAdWithError={bannerError}
+                        admobDispatchAppEvent={adMobEvent} />
+                        <PublisherBanner
+                                bannerSize="smartBannerPortrait"
+                                adUnitID="ca-app-pub-9425276964066348/8203255709"
+                                didFailToReceiveAdWithError={bannerError}
+                                admobDispatchAppEvent={adMobEvent} />
+                                <PublisherBanner
+                                        bannerSize="smartBannerPortrait"
+                                        adUnitID="ca-app-pub-9425276964066348/8203255709"
+                                        didFailToReceiveAdWithError={bannerError}
+                                        admobDispatchAppEvent={adMobEvent} />
+                                        <PublisherBanner
+                                                bannerSize="smartBannerPortrait"
+                                                adUnitID="ca-app-pub-9425276964066348/8203255709"
+                                                didFailToReceiveAdWithError={bannerError}
+                                                admobDispatchAppEvent={adMobEvent} />
+            <Image source={{uri:portada}} style={{position:'absolute',top:62,bottom:0,left:0,right:0}} />            
             {capitulos ? <FlatList 
                 refreshing={refreshing}
                 onRefresh={()=>dispatch(getCapitulos())}
-                style={{padding:10,backgroundColor:'#dbdbdb80',margin:10,borderRadius:5}}
+                style={{padding:10,backgroundColor:'#dbdbdb80',margin:10,borderRadius:5,position:'absolute',top:62,bottom:10,left:0,right:0}}
                 data={ListaCapitulos}
                 renderItem={({item,index})=>{
                     
@@ -65,6 +126,11 @@ const Capitulos = ({navigation}) =>{
             /> : <View style={{padding:40,backgroundColor:'#dbdbdb80',textAlign:'center'}}>
                 <Text style={{fontSize:20}}>Sin capitulos por el momento!!!</Text>
             </View>}
+            {/* <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/9719533260"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} /> */}
         </LayoutApp>
     );
 }

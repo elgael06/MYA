@@ -5,6 +5,7 @@ import WebView from 'react-native-webview';
 import LayoutApp from '../../components/LayoutApp';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AdMobInterstitial, PublisherBanner } from 'react-native-admob';
 
 
 const VideoPaly = ({navigation}) =>{
@@ -13,13 +14,11 @@ const VideoPaly = ({navigation}) =>{
     const [cargando,setCargando] = useState(false);
     const dispatch = useDispatch();
     const [pathLink,setPath] = useState('');
-
-    // const windowWidth = Dimensions.get('window').width;
-    // const windowHeight = Dimensions.get('window').height;
-    // let reference = null;
     
     useEffect(()=>{
         console.log('play video',descripcion,uri);
+        // AdMobInterstitial.setAdUnitID('ca-app-pub-9425276964066348/9516337370'); 
+        // AdMobInterstitial.requestAd(AdMobInterstitial.showAd);
     },[]);
 
     const onBuffer =()=>{
@@ -52,22 +51,24 @@ const VideoPaly = ({navigation}) =>{
         dispatch({
             type:'SELECT_CAPITULO',
             value
-        });
+        });       
+        // AdMobInterstitial.showAd();
+    }
+    const bannerError =()=>{
+        console.log('fallo baner');
+    }
+    const adMobEvent =()=>{
+        console.log('event baner.');
     }
 
     const comprobar = () =>{
         let dato = {};
         console.log('id=>',id)
-        if(uri.includes('mega.nz')){
-            dato.html = `<iframe 
-            width='100%' height='100%' style='position:'absolute';top: '0px'; left: '0px'; right: 0px; bottom: '0px';'
-            frameborder="0" 
-            src="${uri}" 
-            allowfullscreen 
-            allow="autoplay;"></iframe>`;
+        if(uri.includes('mega.nz') || uri.includes('drive.google.com')){
+            dato.uri = uri;
         }else if(uri.includes('www.mediafire.com/file/')){
-            console.log('mediafire');
-            dato.uri = `https://apiserieslyg.herokuapp.com/series/playSerie?id=${id}`;
+            dato.uri = `https://apiserieslyg.herokuapp.com/series/playSerie?id=${id}`; 
+            
         }else{
             dato.html = ` <video width='100%' height='100%' style='position:'absolute';top: '0px'; left: '0px'; right: 0px; bottom: '0px';' controls >
                 <source src="${uri}">
@@ -80,11 +81,18 @@ const VideoPaly = ({navigation}) =>{
     
     return(<><LayoutApp>
          <StatusBar   hidden={true}/> 
+        {/* <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/9719533260"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} /> */}
          {cargando ? null : 
             <WebView 
+                originWhitelist={['*']}
                 style={{
+                    zIndex:99,
                     position: 'absolute',
-                    top: -10, left: -5, right: -5, bottom: -5,
+                    top: -10, left: -10, right: -5, bottom: -5,
                     alignItems: 'center',
                     justifyContent: 'center',
                     backgroundColor: 'transparent'
@@ -93,24 +101,23 @@ const VideoPaly = ({navigation}) =>{
             />
          }
 
-        <View style={{position:'absolute',left:5,width:45,top:2,zIndex:9999}}>
+        <View style={{position:'absolute',left:5,width:45,top:2}}>
             <TouchableOpacity style={{height:25,with:8}} onPress={salir} >
                 <Icon style={{padding:5}} name='times-circle' color='#EEEEEE70' size={21} />
             </TouchableOpacity>
         </View>
 
-        <View style={{position:'absolute',left:45,width:245,top:8,zIndex:9999}}>
+        <View style={{position:'absolute',left:45,width:245,top:8}}>
             <Text style={{color:'#EEEEEE70'}}>{descripcion}</Text>
         </View>
 
-        <View style={{position:'absolute',right:10,width:55,top:2,zIndex:9999}}>
-            <TouchableOpacity style={{height:25,with:4}} onPress={onEnd} >
+        <View style={{position:'absolute',right:30,width:55,top:5}}>
+            <TouchableOpacity style={{height:25,with:4,zIndex:999,}} onPress={onEnd} >
                 <Text style={{padding:5,color:'#EEEEEE70'}}>SIG.
                 <Icon style={{padding:5}} name='step-forward' color='#EEEEEE70' size={17} />
                 </Text>
             </TouchableOpacity>
         </View>
-
         </LayoutApp>
     </>)
 }
