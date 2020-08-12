@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import TopAppBar from '../../components/TopAppBar';
-import { View, ScrollView, RefreshControl } from 'react-native';
-import { Text, theme } from 'galio-framework';
+import { View, ScrollView, RefreshControl, ActivityIndicator } from 'react-native';
+import { Text } from 'galio-framework';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSeries, getTopSeries } from '../../actions/series';
@@ -9,10 +9,7 @@ import LayoutApp from '../../components/LayoutApp';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import VistaLista from '../../components/VistaLista';
 import { 
-    AdMobBanner, 
-    AdMobInterstitial, 
     PublisherBanner,
-    AdMobRewarded
   } from 'react-native-admob';
 
 
@@ -51,12 +48,13 @@ const Series = ({navigation})=>{
 
     return(<LayoutApp>
         <TopAppBar title='Inicio' right={<TouchableOpacity style={{marginLeft:100}} onPress={()=>navigation.push('FiltroSeries')}> 
-                <Icon color={"#EEE"} size={theme.SIZES.BASE} name='search' size={23} />
+                <Icon color={"#EEE"} name='search' size={23} />
             </TouchableOpacity>} 
         />
         
         <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={fetchData} />}>
-        { refreshing ? null:<Fragment>
+        { refreshing ? null
+        :<Fragment>
             <VistaLista 
                 title={`${listaTop.length} Nuevas series`}
                 lista={listaTop}
