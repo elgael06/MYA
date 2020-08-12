@@ -12,11 +12,11 @@ const Stack = createStackNavigator();
 const Nav = () => {
   return (
     <NavigationContainer documentTitle='adv'>
-        <Stack.Navigator>
+        <Stack.Navigator>         
             <Stack.Screen options={{header:()=>null,gestureEnabled:true,gestureDirection:'horizontal',animationTypeForReplace:"push"}} name="Series" component={Series} />
             <Stack.Screen options={{header:()=>null,gestureEnabled:true,gestureDirection:'horizontal',animationTypeForReplace:"push"}} name="Capitulos" component={Capitulos} />
             <Stack.Screen options={{header:()=>null,gestureEnabled:true,gestureDirection:'horizontal',animationTypeForReplace:"push"}} name="FiltroSeries" component={FiltroSeries} />
-            <Stack.Screen options={{header:()=>null,gestureEnabled:true,gestureDirection:'horizontal',animationTypeForReplace:"push"}} name="VideoPaly" component={VideoPaly} />
+            <Stack.Screen   options={{header:()=>null,gestureEnabled:true,gestureDirection:'horizontal',animationTypeForReplace:"push"}} name="VideoPaly" component={VideoPaly} />
         </Stack.Navigator>
     </NavigationContainer>
   );
