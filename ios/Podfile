@@ -16,6 +16,8 @@ target 'pokemon_app' do
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
+  pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
+
   target 'pokemon_appTests' do
     inherit! :complete
     # Pods for testing

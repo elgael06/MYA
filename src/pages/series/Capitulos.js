@@ -6,17 +6,16 @@ import { getCapitulos } from '../../actions/capitulos';
 import LayoutApp from '../../components/LayoutApp';
 
 import { 
-    AdMobBanner, 
-    AdMobInterstitial, 
-    PublisherBanner,
-    AdMobRewarded
+    PublisherBanner
   } from 'react-native-admob';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon  from 'react-native-vector-icons/FontAwesome';
+import BotonAgregarQuitar from '../../components/BotonAgregarQuitar';
 
 const Capitulos = ({navigation}) =>{
     const {
         serie:{
+            id,
             nombre,
             portada,
         },
@@ -57,7 +56,9 @@ const Capitulos = ({navigation}) =>{
             <TopAppBar 
                 back
                 onBack={()=>navigation.pop()}    
-                title={nombre}                 
+                title={nombre}
+                right={ <BotonAgregarQuitar id={id} nombre={nombre} />}
+
             />
 
             <Image source={{uri:portada}} style={{position:'absolute',top:62,bottom:0,left:0,right:0}} />   
@@ -68,7 +69,7 @@ const Capitulos = ({navigation}) =>{
                         [{text:'NO'},{icon:<Icon  style={{flexDirection:'column-reverse',right:10}} name='play' size={23} color={"#EEE"}  />,text:'SI',onPress:()=>payVideo(item.descripcion,item.uri,index,item.id)}]
                     );
                     
-                    return (<TouchableOpacity onLongPress={alerta} onPress={alerta}
+                    return (<TouchableOpacity key={index} onLongPress={alerta} onPress={alerta}
                         style={{
                             flex:1,
                             minHeight:70,

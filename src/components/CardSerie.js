@@ -1,32 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import { Image, View } from 'react-native';
 import { Block, Text, Button } from 'galio-framework';
 import Icon  from 'react-native-vector-icons/FontAwesome';
-import { useDispatch, useSelector } from 'react-redux';
-import { SeriesFavoritas } from '../actions/series';
-import { insertar,select } from '../data/database';
+import BotonAgregarQuitar from './BotonAgregarQuitar';
 
 const CardSerie = ({item,selectSeries=e=>e})=>{
-    const {seriesFavoritas=[]} = useSelector(state=>state.series);
-    const [status,setStatus] = useState(false);
-    const dispatch = useDispatch();
-    
-    useEffect(()=>{
-        const res = seriesFavoritas.includes(item.id);
-        setStatus(res);
-    },[seriesFavoritas]);
-
-    const removeSerieFav = ()=>{
-        setStatus(false);
-        const res = seriesFavoritas.filter(e=>e!=item.id);
-        dispatch(SeriesFavoritas(res));
-    }
-    const agregar = ()=>{
-        setStatus(true);
-        insertar().insertarSerie(item.id);
-        select().favoritas()
-        dispatch(SeriesFavoritas([...seriesFavoritas,item.id]));
-    }
     
     return(<View style={{
         flex:1,
@@ -46,16 +24,10 @@ const CardSerie = ({item,selectSeries=e=>e})=>{
         </Block>
         
         <View  style={{flex:1,flexDirection:'row-reverse',alignItems:'flex-end'}} >
-           {status ?
-            <Button style={{width:45}} round onPress={removeSerieFav} size="small" color='#EEEEEE90'  >
-                <Icon name='close' color='red' size={25} />
-            </Button>
-           : <Button style={{width:45}} round onPress={agregar} size="small" color='#EEEEEE90'  >
-                <Icon name='bookmark' color='#f7aa3e' size={25} />
-            </Button>}
+           <BotonAgregarQuitar id={item.id} nombre={item.nombre} />
             
-            <Button style={{width:45,fex:1}} round onPress={()=>selectSeries(item)} size="small" color='#393e4670'  >
-                <Icon name='list' color='#EEE' size={25} />
+            <Button style={{width:45,fex:1}} round onPress={()=>selectSeries(item)} size="small" color='#EEEEEE90'  >
+                <Icon name='play-circle' color='#eb811e' size={45} />
             </Button>
         </View>
 

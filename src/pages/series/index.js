@@ -25,10 +25,8 @@ const Series = ({navigation})=>{
     },[refreshing]);
 
     const fetchData = ()=> {
-        const datos = select();
         dispatch(getSeries());
-        dispatch(getTopSeries(5));
-        datos.favoritas();
+        dispatch(getTopSeries(5));        
     }
 
     const selectSeries = value => {
