@@ -11,24 +11,24 @@ import VistaLista from '../../components/VistaLista';
 import { 
     PublisherBanner,
   } from 'react-native-admob';
+import { select } from '../../data/database';
 
 
 const Series = ({navigation})=>{
-    const {lista=[],listaTop=[]} = useSelector(state=>state.series);
+    const {lista=[],listaTop=[],seriesFavoritas=[]} = useSelector(state=>state.series);
     const {refreshing=false} = useSelector(state=>state.userInterface);
     const dispatch = useDispatch();
 
     useEffect(()=>{
         if(refreshing)
-            fetchData();
-            // AdMobInterstitial.setAdUnitID("ca-app-pub-9425276964066348/9516337370");
-            // AdMobInterstitial.setTestDeviceID('EMULATOR');
-            
+            fetchData();            
     },[refreshing]);
 
     const fetchData = ()=> {
+        const datos = select();
         dispatch(getSeries());
         dispatch(getTopSeries(5));
+        datos.favoritas();
     }
 
     const selectSeries = value => {
@@ -45,6 +45,10 @@ const Series = ({navigation})=>{
     const adMobEvent =()=>{
         console.log('event baner.');
     }
+    const listaFavoritas = () => lista.filter(e=>{
+
+        return seriesFavoritas.includes( e.id );
+    })
 
     return(<LayoutApp>
         <TopAppBar title='Inicio' right={<TouchableOpacity style={{marginLeft:100}} onPress={()=>navigation.push('FiltroSeries')}> 
@@ -66,8 +70,8 @@ const Series = ({navigation})=>{
                 selectSeries={selectSeries}
             />
             <VistaLista 
-                title={`Lista ${lista.length} series`}
-                lista={lista}
+                title={`Por ver ${listaFavoritas().length} series`}
+                lista={listaFavoritas()}
                 selectSeries={selectSeries}
             />
         </Fragment>

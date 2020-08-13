@@ -35,3 +35,12 @@ export const getBusqueda = (filtro) =>{
     }
 } 
 
+export const SeriesFavoritas = value =>{
+    return dispatch=>{
+        dispatch({
+            type:'FAVORITAS',
+            value
+        });
+    }
+}
+

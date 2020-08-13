@@ -5,7 +5,8 @@ export const initialSeries = {
     serie:null,
     ListaCapitulos:[],
     capitulo:null,
-    filtroSeries:[]
+    filtroSeries:[],
+    seriesFavoritas:[]
 };
 
 const series = (state=initialSeries,action)=>{
@@ -35,6 +36,11 @@ const series = (state=initialSeries,action)=>{
                 ...state,
                 ListaCapitulos:action.value
             };
+        case 'FAVORITAS':
+            return{
+                ...state,
+                seriesFavoritas:action.value
+            }
         case 'SELECT_CAPITULO':
             return {
                 ...state,
