@@ -1,0 +1,92 @@
+const { StyleSheet } = require("react-native");
+
+
+
+const styles = StyleSheet.create({
+    app:{
+        position:'absolute',
+        flex:1,
+        backgroundColor:'#393E46',
+        top:0,
+        bottom:0,
+        left:0,
+        right:0,
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    imageIcon:{
+        position:'absolute',
+        height:158,
+        top:-94,
+        justifyContent:'center',
+        alignItems:'center',
+        left:70
+    },
+    input:{
+        backgroundColor:'#393E46',
+        borderColor:'#EEE',
+        color:'#EEE',
+        marginTop:36,
+        height:42
+    },
+    buttonPrimary:{
+        backgroundColor:'#8621D9',
+        marginTop:36,
+        left:0,
+        flexDirection:'row',
+        height:46,
+        borderRadius:10,
+        justifyContent:'center',
+        alignItems:'center',     
+        borderColor:'#EEE',
+        borderWidth:1,
+        height:42   
+    },
+    textButon:{
+        fontSize:24,
+        color:'#EEE',
+    },
+    actionText:{
+        height:42,
+        justifyContent:'center',
+        alignItems:'center', 
+        top:10
+    },
+    textAction:{
+        color:'#EEE',
+        fontSize:20,
+        lineHeight:23,
+    },
+    container:{
+        backgroundColor:'#222831',
+        width:310,
+        paddingTop:50,
+        borderRadius:15,
+        paddingBottom:12,
+        paddingLeft:12,
+        paddingRight:12, 
+        overflow:'scroll'           
+    },
+    fotter:{
+        position:'absolute',
+        bottom:28,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    footerText:{
+        fontSize:18,
+        color:'#EEE'
+    },
+    textExito:{
+        marginTop:55,
+        height:120,
+        alignItems:'center',
+        justifyContent:'center',
+        color:'#EEE',
+        fontSize:26,
+        textAlign:'center'
+    }
+});
+
+export default styles;
