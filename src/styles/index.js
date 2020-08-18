@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
     },
     fotter:{
         position:'absolute',
-        bottom:28,
+        bottom:8,
         justifyContent:'center',
         alignItems:'center'
     },
     footerText:{
-        fontSize:18,
+        fontSize:12,
         color:'#EEE'
     },
     textExito:{
@@ -86,6 +86,44 @@ const styles = StyleSheet.create({
         color:'#EEE',
         fontSize:26,
         textAlign:'center'
+    },
+    floatButton:{
+        width:50,
+        height:50,
+        justifyContent:'flex-end',
+        alignSelf:'flex-end',                
+        borderRadius:50,
+        justifyContent:'center',
+        alignItems:'center',
+        margin:10,
+        bottom:10
+    },
+    menuContainer:{
+        justifyContent:"center",
+        alignItems:'center',  
+        marginTop:0,      
+    },
+    menuTitle:{
+       top:-30,
+       fontSize:24
+    },
+    botonMenu:{
+        height:45,
+        backgroundColor:'rgba(66, 66, 68, 0.5)',
+        borderRadius:10,
+        width:290,
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:12
+    },
+    menuTextBoton:{
+        color:'#EEE',
+        fontSize:18
+    },
+    menuBotones:{
+        maxHeight:250,
+        paddingBottom:35,
+        overflow:'scroll'
     }
 });
 

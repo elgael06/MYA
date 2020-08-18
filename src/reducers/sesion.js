@@ -1,10 +1,12 @@
 
 
 export const  defaultSesion = {
-    status:true,
+    status:false,
+    checking:false,
     token:'',
-    id:0,
-    usuario:''
+    usuario:{id:0,nombre:'',passw:''},
+    email:'',
+    sesiones:[]
 } 
 
 export default (state=defaultSesion,action)=>{
@@ -29,6 +31,21 @@ export default (state=defaultSesion,action)=>{
             return {
                 ...state,
                 usuario:action.value
+            }
+        case 'EMAIL':
+            return {
+                ...state,
+                usuario:action.value
+            }
+        case 'SESIONES':
+            return {
+                ...state,
+                sesiones:action.value
+            }
+        case 'CHECK_SESION':
+            return {
+                ...state,
+                checking:action.value
             }
         default: return state;
     }

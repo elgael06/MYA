@@ -1,10 +1,10 @@
-import { View, Image } from  "react-native";
+import { View, Image, ToastAndroid } from  "react-native";
 import React, { useState } from 'react';
 import { Text, Input } from "galio-framework";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import icon from '../../assets/icon/icon.png';
 import styles from "../../styles";
-import { changeStatus } from "../../actions/sesion";
+import { changeStatus, fetchInicioSesion } from "../../actions/sesion";
 import { useDispatch } from "react-redux";
 
 const initialState ={
@@ -23,9 +23,13 @@ const Login = ({navigation})=>{
     }
     
     const enviarSesion = ()=>{
-
-        console.log('inicio sesion');
-        dispatch(changeStatus(true));
+        if(usuario.email&& usuario.pass){
+            console.log('inicio sesion');
+            //dispatch(changeStatus(true));
+            dispatch(fetchInicioSesion(usuario.email,usuario.pass));
+        }else{
+            ToastAndroid.show('Falta Colocar Datos.',ToastAndroid.SHORT,ToastAndroid.CENTER);
+        }
     }
 
     return (<View style={styles.app}>
@@ -38,7 +42,7 @@ const Login = ({navigation})=>{
             <Input 
                 color='#EEE'
                 style={styles.input}
-                placeholder='Email'dskd
+                placeholder='Email'
                 placeholderTextColor="#EEE"
                 type='email-address'
                 value={usuario.email}
