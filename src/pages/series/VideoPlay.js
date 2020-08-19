@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StatusBar, Alert, View, Dimensions, Text } from 'react-native';
 import WebView from 'react-native-webview';
+
 import LayoutApp from '../../components/LayoutApp';
 import Icon  from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -54,6 +55,7 @@ const VideoPaly = ({navigation}) =>{
         });       
         // AdMobInterstitial.showAd();
     }
+
     const bannerError =()=>{
         console.log('fallo baner');
     }
@@ -120,61 +122,3 @@ const VideoPaly = ({navigation}) =>{
         </View>
         </LayoutApp>
     </>)
-}
-
-export default VideoPaly;
-
-/**
-    "react-native-video": "^4.4.5",
-    "react-native-video-controls": "^2.6.0",
-    "react-native-video-player": "^0.10.1",
-    "react-native-vlc-player": "^0.2.3",
-
-// import VlcPlayer from 'react-native-vlc-player';
-// import NativeVlcPlayer from 'react-native-vlc-player/src/NativeVlcPlayer';
-// import Video from 'react-native-video-controls';
-
-//  <NativeVlcPlayer 
-        //     ref={re=>reference=re}
-        //     autoplay={true}
-        //     style={{
-        //         position: 'absolute',
-        //         top: 0, left: 0, right: 0, bottom: 0,
-        //         alignItems: 'center',
-        //         justifyContent: 'center',
-        //         backgroundColor: 'transparent'
-        //     }}
-
-        //   source={{
-        //     uri: uri,
-        //     autoplay: true,
-        //     initOptions: ['--codec=avcodec'],
-        //   }}
-        //   onVLCEnded={onEnd}
-        //   onVLCError={videoError}
-
-        //  />
-        //  <Video 
-        //     fullscreenOrientation='portrait'
-        //     title={descripcion}
-        //     fullscreen={true}
-        //     source={{
-        //         uri:uri,
-        //         autoplay: true,
-        //         initOptions: ['--codec=avcodec'],
-        //     }}
-        //     navigator={{pop:salir}}
-        //     videoStyle={{
-        //         backgroundColor:'#bdbdbd50',
-        //     }}
-        //     onEnd={onEnd}
-        //     seekColor='#f2d40f'
-        //     ref={e=>reference=e}
-        //     onBuffer={onBuffer}
-        //     onError={videoError}     
-        //     audioOnly                        
-        // />
-        
-    
-*/
-
