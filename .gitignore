@@ -24,6 +24,7 @@ DerivedData
 # Android/IntelliJ
 #
 .idea
+android/java_pid23804.hprof
 .gradle
 local.properties
 *.iml

@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBusqueda } from '../../actions/series';
 import CardSerie from '../../components/CardSerie';
 import { View } from 'react-native';
+import { PublisherBanner } from 'react-native-admob';
 
 const FiltroSeries = ({navigation}) =>{
     const {filtroSeries=[]} = useSelector(state=>state.series);
@@ -32,6 +33,12 @@ const FiltroSeries = ({navigation}) =>{
             value:{...value}
         });
         navigation.navigate('Capitulos');
+    }
+    const bannerError =()=>{
+        console.log('fallo baner');
+    }
+    const adMobEvent =()=>{
+        console.log('event baner.');
     }
     return (
         <LayoutApp>
@@ -73,6 +80,11 @@ const FiltroSeries = ({navigation}) =>{
                     <CardSerie item={item} selectSeries={selectSeries} />
                 </View> )}
             />
+            <PublisherBanner
+                bannerSize="smartBannerPortrait"
+                adUnitID="ca-app-pub-9425276964066348/9719533260"
+                didFailToReceiveAdWithError={bannerError}
+                admobDispatchAppEvent={adMobEvent} />
         </LayoutApp>
         )
 }
