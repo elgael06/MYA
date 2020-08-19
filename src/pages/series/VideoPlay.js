@@ -122,3 +122,6 @@ const VideoPaly = ({navigation}) =>{
         </View>
         </LayoutApp>
     </>)
+}
+
+export default VideoPaly;
