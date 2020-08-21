@@ -89,6 +89,7 @@ export const fetchAddSesion = (email,passw,usuario,callBack=e=>e) =>{
         dispatch({type:'REFRESH_PAGE',value:true});
         const newSesion = await (await fetch('https://apiserieslyg.herokuapp.com/api/sesion',{            
             method:'POST',
+            headers:{'Content-Type': 'application/json'},
             body:JSON.stringify({
                 email,
                 passw,
@@ -101,6 +102,31 @@ export const fetchAddSesion = (email,passw,usuario,callBack=e=>e) =>{
             callBack()
         }else{
             ToastAndroid.show('error al crear sesion.',ToastAndroid.SHORT,ToastAndroid.CENTER);
+        }
+        dispatch({type:'REFRESH_PAGE',value:false});
+    }
+}
+
+export const RecoveryPassword = (emailRecovery='',callBack=e=>e) =>{
+
+    return async dispatch =>{
+
+        dispatch({type:'REFRESH_PAGE',value:true});
+        const pass = await (await fetch('https://apiserieslyg.herokuapp.com/api/sesion',{            
+            method:'POST',
+            body:JSON.stringify({
+                emailRecovery
+            }),
+            headers:{'Content-Type': 'application/json'}
+        })).json();
+
+        console.log(pass);
+        if(pass){
+            ToastAndroid.show(`se envio la nueva contraseña al email ${emailRecovery} con exito.`,ToastAndroid.SHORT,ToastAndroid.CENTER);
+            dispatch({type:'REFRESH_PAGE',value:false});
+            callBack()
+        }else{
+            ToastAndroid.show('error al recuperar contraseña.',ToastAndroid.SHORT,ToastAndroid.CENTER);
         }
         dispatch({type:'REFRESH_PAGE',value:false});
     }
