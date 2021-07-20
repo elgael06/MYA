@@ -19,7 +19,7 @@
     "@unimodules/core": "^5.3.0",
     "galio-framework": "^0.7.1",
     "react": "16.13.1",
-    "react-native": "0.63.1",
+    "react-native": "0.64.1",
     "react-native-admob": "^2.0.0-beta.6",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-reanimated": "^1.10.1",
